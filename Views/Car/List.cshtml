@@ -1,0 +1,20 @@
+﻿@model PolovniAutomobiliMVC.ViewModels.CarListViewModel
+
+<div class="row">
+    <h1>@Model.CurrentCategory</h1>
+    @foreach(var car in Model.Cars)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <img src="@car.ImageUrlThumbnail" alt="" class="img-thumbnail">
+                <div class="caption-top">
+                    <h3 class="pull-right">@car.Price.ToString("c")</h3>
+                    <h3>
+                        <a>@car.Name</a>
+                    </h3>
+                    <p>@car.DescriptionShort</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
