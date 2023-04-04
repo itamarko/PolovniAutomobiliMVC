@@ -1,0 +1,12 @@
+﻿@model Car
+
+<h2>@Model.Name</h2>
+
+<div>
+    <img alt="@Model.Name" src="@Model.ImageUrlThumbnail"/>
+    <div>
+        <h3>@Model.Price.ToString("c")</h3>
+        <h4>@Model.DescriptionShort</h4>
+        <p>@Model.Description</p>
+    </div>
+</div>

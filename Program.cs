@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using PolovniAutomobiliMVC.Models;
 
 namespace PolovniAutomobiliMVC
@@ -8,9 +9,13 @@ namespace PolovniAutomobiliMVC
         {
             var builder = WebApplication.CreateBuilder(args);
 
-
-            builder.Services.AddScoped<ICarRepository, MockCarRepository>();
-            builder.Services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+            builder.Services.AddDbContextPool<AppDbContext>(options =>
+                {
+                    options.UseSqlServer(builder.Configuration["PolovniAutomobiliDbConn"]);
+                }
+            );
+            builder.Services.AddScoped<ICarRepository, CarRepository>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
