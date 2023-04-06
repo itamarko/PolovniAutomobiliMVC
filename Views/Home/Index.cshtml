@@ -1,8 +1,16 @@
-﻿@{
+﻿@model PolovniAutomobiliMVC.ViewModels.HomeViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<partial name="_Carousel"/>
+
+<h2>Special offer!</h2>
+<h4>Special prices / limited time offer!</h4>
+<div class="row">
+    @foreach(var car in Model.SpecialOffers)
+    {
+        <partial name="_CarCard" model="car"/>
+    }
 </div>

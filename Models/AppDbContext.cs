@@ -12,6 +12,7 @@ namespace PolovniAutomobiliMVC.Models
         public DbSet<Car> Cars { get; set; }
         public DbSet<FuelType> FuelTypes { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

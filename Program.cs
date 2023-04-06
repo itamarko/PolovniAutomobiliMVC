@@ -17,6 +17,9 @@ namespace PolovniAutomobiliMVC
             builder.Services.AddScoped<ICarRepository, CarRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
+            builder.Services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            builder.Services.AddHttpContextAccessor();
+            builder.Services.AddSession();
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
@@ -32,7 +35,7 @@ namespace PolovniAutomobiliMVC
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();
