@@ -8,5 +8,13 @@
         <h3>@Model.Price.ToString("c")</h3>
         <h4>@Model.DescriptionShort</h4>
         <p>@Model.Description</p>
+        <p class="button">
+            <a class="btn btn-primary"
+               asp-controller="ShoppingCart"
+               asp-action="AddToShoppingCart"
+               asp-route-carId="@Model.Id">
+                Add to cart
+            </a>
+        </p>    
     </div>
 </div>

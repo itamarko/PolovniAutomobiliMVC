@@ -15,13 +15,24 @@ namespace PolovniAutomobiliMVC.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public ViewResult List()
+        public ViewResult List(int? categoryId)
         {
             CarListViewModel model = new CarListViewModel()
             {
                 Cars = _carRepository.AllCars,
-                CurrentCategory = "SUV"
+                CurrentCategory = "All cars"
             };
+
+            if (categoryId.HasValue)
+            {
+                model.Cars = _carRepository.AllCars.Where(c => c.CategoryId == categoryId);
+                model.CurrentCategory = _categoryRepository.AllCategories
+                                            .Where(c => c.Id == categoryId)
+                                            .Select(c => c.Name)
+                                            .FirstOrDefault();
+
+            }
+
             return View(model);
         }
 

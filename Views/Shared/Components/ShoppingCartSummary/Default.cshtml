@@ -1,0 +1,13 @@
+﻿@model PolovniAutomobiliMVC.ViewModels.ShoppingCartViewModel
+
+@if(Model.ShoppingCart.ShoppingCartItems.Count > 0)
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark">
+            <span class="fas fa-shopping-cart"></span>
+            <span class="cart-status">
+                @Model.ShoppingCart.ShoppingCartItems.Count
+            </span>
+        </a>
+    </li>
+}

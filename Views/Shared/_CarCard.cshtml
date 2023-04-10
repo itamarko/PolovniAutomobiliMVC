@@ -1,14 +1,26 @@
 ﻿@model Car
 
 <div class="col-sm-4 col-lg-4 col-md-4">
-    <div class="thumbnail">
-        <img src="@Model.ImageUrlThumbnail" alt="" class="img-thumbnail">
-        <div class="caption-top">
-            <h3 class="pull-right">@Model.Price.ToString("c")</h3>
+    <div class="card">
+        <div class="card-header">
+            <img src="@Model.ImageUrlThumbnail" alt="" class="img-thumbnail">
+        </div>
+        <div class="card-body">
             <h3>
                 <a asp-controller="Car" asp-action="Details" asp-route-id="@Model.Id">@Model.Name</a>
             </h3>
+            <h3 class="pull-right">@Model.Price.ToString("c")</h3>
             <p>@Model.DescriptionShort</p>
+        </div>
+        <div class="card-footer">
+            <p class="button">
+                <a class="btn btn-primary"
+                    asp-controller="ShoppingCart"
+                    asp-action="AddToShoppingCart"
+                    asp-route-carId="@Model.Id">
+                    Add to cart
+                </a>
+            </p>
         </div>
     </div>
 </div>
